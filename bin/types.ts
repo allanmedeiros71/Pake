@@ -30,6 +30,9 @@ export interface PakeCliOptions {
   // Enable immersive header, default false.
   hideTitleBar: boolean;
 
+  // Hide menu bar, default false
+  hideMenuBar: boolean;
+
   // Enable windows always on top, default false
   alwaysOnTop: boolean;
 

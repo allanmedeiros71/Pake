@@ -47,6 +47,7 @@ program
   )
   .option('--use-local-file', 'Use local file packaging', DEFAULT.useLocalFile)
   .option('--fullscreen', 'Start in full screen', DEFAULT.fullscreen)
+  .option('--hide-menu-bar', 'Hide menu bar', DEFAULT.hideMenuBar)
   .option('--hide-title-bar', 'For Mac, hide title bar', DEFAULT.hideTitleBar)
   .option('--multi-arch', 'For Mac, both Intel and M1', DEFAULT.multiArch)
   .option(
