@@ -31,6 +31,17 @@
 - **Advanced Users**: Clone the project locally for [Custom Development](#development), or check [Advanced Usage](docs/advanced-usage.md) for style customization and feature enhancement
 - **Troubleshooting**: Check [FAQ](docs/faq.md) for common issues and solutions
 
+## Instructions for Developers
+
+```shell
+git clone git@github.com:allanmedeiros71/Pake.git
+cd Pake
+pnpm install
+pnpm run cli:build
+# Test run:
+pnpm test
+```
+
 ## Popular Packages
 
 <table>
