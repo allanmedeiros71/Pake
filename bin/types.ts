@@ -111,6 +111,9 @@ export interface PakeCliOptions {
 
   // Ignore certificate errors (for self-signed certs), default false
   ignoreCertificateErrors: boolean;
+
+  // Output directory for the application
+  output: string;
 }
 
 export interface PakeAppOptions extends PakeCliOptions {

@@ -219,6 +219,11 @@ program
       .default(DEFAULT.ignoreCertificateErrors)
       .hideHelp(),
   )
+  .addOption(
+    new Option('--output <string>', 'Output directory for the application')
+      .default(DEFAULT.output)
+      .hideHelp(),
+  )
   .version(packageJson.version, '-v, --version')
   .configureHelp({
     sortSubcommands: true,

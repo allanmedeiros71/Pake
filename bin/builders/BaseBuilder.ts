@@ -258,22 +258,27 @@ export default abstract class BaseBuilder {
     const fileName = this.getFileName();
     const fileType = this.getFileType(target);
     const appPath = this.getBuildAppPath(npmDirectory, fileName, fileType);
-    const distPath = path.resolve(`${name}.${fileType}`);
-    await fsExtra.copy(appPath, distPath);
 
+    // Handle output directory
+    const outputDir = this.options.output
+      ? path.resolve(this.options.output)
+      : process.cwd();
+    await fsExtra.ensureDir(outputDir);
+    const distPath = path.join(outputDir, `${name}.${fileType}`);
+
+    await fsExtra.copy(appPath, distPath);
     // Copy raw binary if requested
     if (this.options.keepBinary) {
-      await this.copyRawBinary(npmDirectory, name);
+      await this.copyRawBinary(npmDirectory, name, outputDir);
     }
-
     await fsExtra.remove(appPath);
     logger.success('✔ Build success!');
     logger.success('✔ App installer located in', distPath);
-
     // Log binary location if preserved
     if (this.options.keepBinary) {
-      const binaryPath = this.getRawBinaryPath(name);
-      logger.success('✔ Raw binary located in', path.resolve(binaryPath));
+      const binaryName = this.getRawBinaryPath(name);
+      const binaryPath = path.join(outputDir, binaryName);
+      logger.success('✔ Raw binary located in', binaryPath);
     }
   }
 
@@ -462,10 +467,11 @@ export default abstract class BaseBuilder {
   protected async copyRawBinary(
     npmDirectory: string,
     appName: string,
+    outputDir: string,
   ): Promise<void> {
     const binaryPath = this.getRawBinarySourcePath(npmDirectory, appName);
-    const outputPath = this.getRawBinaryPath(appName);
-
+    const binaryName = this.getRawBinaryPath(appName);
+    const outputPath = path.join(outputDir, binaryName);
     if (await fsExtra.pathExists(binaryPath)) {
       await fsExtra.copy(binaryPath, outputPath);
       // Make binary executable on Unix-like systems
