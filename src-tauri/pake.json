@@ -1,7 +1,7 @@
 {
   "windows": [
     {
-      "url": "https://weekly.tw93.fun/",
+      "url": "https://rocketchat.codata.pb.gov.br",
       "url_type": "web",
       "hide_title_bar": true,
       "fullscreen": false,
@@ -15,7 +15,7 @@
       "hide_on_close": true,
       "incognito": false,
       "enable_wasm": false,
-      "enable_drag_drop": false,
+      "enable_drag_drop": true,
       "maximize": false,
       "start_to_tray": false,
       "force_internal_navigation": false
@@ -31,7 +31,7 @@
     "linux": true,
     "windows": true
   },
-  "system_tray_path": "icons/icon.png",
+  "system_tray_path": "png/rocketchat.png",
   "inject": [],
   "proxy_url": "",
   "multi_instance": false

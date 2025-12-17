@@ -215,7 +215,7 @@ pub fn run_app() {
             help_menu.append(&github_item)?;
 
             // Construct the Menu Bar
-            let menu = Menu::with_items(
+            let _menu = Menu::with_items(
                 app,
                 &[
                     &app_menu,
@@ -228,7 +228,7 @@ pub fn run_app() {
                 ],
             )?;
 
-            app.set_menu(menu)?;
+            // app.set_menu(_menu)?;
 
             // Event Handling for Custom Menu Item
             app.on_menu_event(move |app_handle, event| {
